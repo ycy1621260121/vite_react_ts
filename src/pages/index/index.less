@@ -1,0 +1,163 @@
+* {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;;
+}
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f6fa;
+
+  .content {
+    padding: 1.5rem;
+    background-color: white;
+  }
+}
+
+.model {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: opacity 1s ease-in;
+
+  .mask {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    z-index: 100;
+    left: 0;
+    top: 0;
+  }
+
+  &.active {
+    opacity: 1;
+    transition: opacity 1s ease-in;
+  }
+
+  .container2 {
+    position: relative;
+    z-index: 102;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f6fa;
+    padding: 0 1.5rem;
+    align-self: center;
+    border-radius: .625rem;
+  }
+}
+
+.content {
+  border-radius: .625rem;
+  display: flex;
+  flex-direction: column;
+
+  .floorLayer {
+    padding: .5rem 1rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+    align-self: center;
+    border: solid .1rem #ccc;
+    border-radius: .3125rem;
+  }
+
+  .qrcode-btn {
+    font-size: 1rem;
+    color: #333;
+    margin-top: 1rem;
+    box-sizing: content-box;
+    display: block;
+    text-align: center;
+  }
+
+  .content-inner {
+    MAX-height: 23rem;
+    text-align: center;
+    padding: 1.5rem 0;
+
+    .content-tab-box {
+      border-bottom: solid .1rem #ccc;
+      line-height: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      .content-tab {
+        line-height: 2.5rem;
+        width: 6.25rem;
+        text-align: center;
+
+        &.active::after {
+          content: "";
+          display: inline-block;
+          position: absolute;
+          bottom: -.1rem;
+          width: 6.25rem;
+          height: .25rem;
+          background: #ccc;
+        }
+
+        &.left::after {
+          left: 0;
+          right: auto;
+        }
+
+        &.right::after {
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+
+    .floorList-box {
+      overflow-y: scroll;
+      height: 18.75rem;
+      
+        .floor-item {
+          line-height: 2.5rem;
+          border-bottom: solid .1rem #eee;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          &.active {
+            color: red;
+
+            span {
+              width: .875rem;
+              height: .875rem;
+              border-radius: .875rem;
+              background-color: #333;
+              display: inline-block;
+            }
+          }
+        }
+    }
+  }
+}
