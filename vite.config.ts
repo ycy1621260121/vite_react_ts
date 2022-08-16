@@ -29,12 +29,14 @@ export default defineConfig({
         },
     },
     server: {
+        //port: 8099,
+        //open: true,
         proxy: {
             // 字符串简写写法
             //'/foo': 'http://localhost:4567',
             // 选项写法
             '/api': {
-                target: 'http://jsonplaceholder.typicode.com',
+                target: 'http://chuneng-dev.louzhangmen.cn:9080/',
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, '')
             },
